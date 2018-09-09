@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-
+#test
 RSpec.describe Article, type: :model do
 describe '#validations' do
   it 'should test that the factory is valid' do
