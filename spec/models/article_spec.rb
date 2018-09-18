@@ -6,6 +6,7 @@ describe '#validations' do
   it 'should test that the factory is valid' do
    expect(build :article).to be_valid 
     end  
+  
   it 'should validate the presence of the title' do
     article = build :article, title: ''
     expect(article).not_to be_valid
@@ -21,6 +22,15 @@ describe '#validations' do
     article = create :article
     invalid_article = build :article, slug: article.slug
     expect(invalid_article).not_to be_valid
+    end
+ end
+  describe '.recent' do
+  it 'should list recent article first' do
+    old_article = create :article
+    newer_article = create :article
+    expect(described_class.recent).to eq(
+      [newer_article,old_article]
+     )
     end
   end
   
